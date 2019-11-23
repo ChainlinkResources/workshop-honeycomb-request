@@ -1,6 +1,5 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 const walletFile = require("./wallet.json");
-const Web3 = require("web3");
 
 module.exports = {
   networks: {
@@ -18,17 +17,6 @@ module.exports = {
       },
       network_id: 3,
       gasPrice: 20000000000
-    },
-    ropsten_ws: {
-      provider: function() {
-        return new HDWalletProvider(
-          walletFile.ropsten_mnemonics,
-          new Web3.providers.WebsocketProvider(walletFile.ropsten_ws_provider)
-        );
-      },
-      network_id: 3,
-      gasPrice: 20000000000,
-      websockets: true
     }
   },
   compilers: {
