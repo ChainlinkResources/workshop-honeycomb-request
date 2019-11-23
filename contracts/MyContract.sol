@@ -26,11 +26,9 @@ contract MyContract is ChainlinkClient{
     function makeRequest() external returns (bytes32 requestId)
     {
         Chainlink.Request memory req = buildChainlinkRequest(jobId, this, this.fulfill.selector);
-        req.add("from", "EUR");
-        req.add("to", "USD");
-        req.add("amount", "1");
-        req.addInt("times", 1000);
-        req.add("copyPath", "info.rate");
+        req.add("low", "1");
+        req.add("high", "6");
+        req.add("copyPath", "random_number");
         requestId = sendChainlinkRequestTo(chainlinkOracleAddress(), req, oraclePaymentAmount);
     }
 
