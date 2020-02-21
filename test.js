@@ -10,8 +10,8 @@ module.exports = async function() {
   console.log(`Initial result: ${result.toString()}`);
 
   console.log("Making a Chainlink request using a Honeycomb job...");
-  requestId = await myContract.makeRequest.call();
-  await myContract.makeRequest();
+  const tx = await myContract.makeRequest();
+  const requestId = tx.logs[0].args.id;
   console.log(`Request ID: ${requestId}`);
 
   console.log("Waiting for the request to be fulfilled...");
